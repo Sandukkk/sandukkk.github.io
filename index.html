@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sandhya Baral| Personal Website</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav>
+  <div class="nav-logo">SandhyaBaral</div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')" class="active" id="nav-home">Home</a></li>
+    <li><a href="#" onclick="showPage('academic')" id="nav-academic">Academic</a></li>
+    <li><a href="#" onclick="showPage('travel')" id="nav-travel">Travel</a></li>
+    <li><a href="#" onclick="showPage('blogs')" id="nav-blogs">Blogs</a></li>
+  </ul>
+</nav>
+
+<!-- ===================== HOME PAGE ===================== -->
+<div id="home" class="page active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-photo-wrap">
+      <img src="{css,images,pages}/images/self.png" alt="Your Name" class="hero-photo"> 
+      <!-- <div class="hero-photo-placeholder">👤</div> -->
+    </div>
+    <div class="hero-text">
+      <h1>Sandhya Baral</h1>
+      <p class="tagline">🎓 Engineer · Researcher · Explorer</p>
+      <p class="bio">
+        Hi! I'm a Computer Engineer graduate based in Nepal. I love building meaningful things at the intersection of technology and society. When I'm not coding or writing papers, you'll find me travelling, exploring new hobbies, or writing on Medium. Welcome to my little corner of the internet!
+      </p>
+    </div>
+  </section>
+
+  <!-- Address -->
+  <section class="address-section">
+    <div class="section-tag">📍 Where I'm From</div>
+    <h2 class="section-title">Address</h2>
+    <div class="divider"></div>
+    <div class="address-cards">
+
+     <div class="address-cards">
+
+  <div class="address-card">
+    <img src="{css,images,pages}/images/pokhar.png" alt="Pokhara" class="address-card-img">
+    <div class="address-card-body">
+      <span class="address-badge badge-permanent">🏠 Permanent Residence</span>
+      <h4>Pokhara, Gandaki Province</h4>
+      <p>The City of Lakes — nestled beneath the Annapurna range, this is my hometown and the place that shaped me.</p>
+    </div>
+  </div>
+
+  <div class="address-card">
+    <img src="{css,images,pages}/images/lalitpur.jpg" alt="Lalitpur" class="address-card-img">
+    <div class="address-card-body">
+      <span class="address-badge badge-current">📍 Current Residence</span>
+      <h4>Lalitpur, Bagmati Province</h4>
+      <p>The cultural heart of the Kathmandu Valley — where I currently live, study, and build things.</p>
+    </div>
+  </div>
+
+</div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-section">
+    <div class="section-tag">✉️ Get In Touch</div>
+    <h2 class="section-title">Contact</h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <a href="tel:+9779846779998" class="contact-chip phone">
+        <span class="icon">📞</span> +977-9846779998
+      </a>
+      <a href="mailto:sandhyabaral44@gmail.com" class="contact-chip email">
+        <span class="icon">✉️</span> sandhyabaral44@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/sandhya-baral-0237a9237/" target="_blank" class="contact-chip linkedin">
+        <span class="icon">💼</span> LinkedIn Profile
+      </a>
+      <a href="https://github.com/Sandukkk" target="_blank" class="contact-chip github">
+        <span class="icon">🐙</span> GitHub Profile
+      </a>
+    </div>
+  </section>
+
+</div><!-- end #home -->
+
+
+<!-- ===================== ACADEMIC PAGE ===================== -->
+<div id="academic" class="page">
+
+  <!-- Education -->
+  <section class="section">
+    <div class="section-tag blue">🎓 Education</div>
+    <h2 class="section-title">My Academic Journey</h2>
+    <div class="divider blue"></div>
+    <div class="education-timeline">
+
+      <div class="edu-item">
+        <h3>Bachelor's in Computer Engineering</h3>
+        <p class="school">Pulchowk Campus, Tribhuwan University, IOE, Nepal</p>
+        <p class="year">📅 2021 – 2025</p>
+      </div>
+
+      <div class="edu-item">
+        <h3>Higher Secondary Education (Science and Mathematics / +2)</h3>
+        <p class="school">Motherland Secondary School, Nepal</p>
+        <p class="year">📅 2018 – 2020</p>
+      </div>
+
+      <div class="edu-item">
+        <h3>Secondary Education (SLC / SEE)</h3>
+        <p class="school">Motherland Secondary School, Nepal</p>
+        <p class="year">📅 Completed 2017</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="projects-section" style="max-width:100%;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div class="section-tag">🚀 Projects</div>
+      <h2 class="section-title">Things I've Built</h2>
+      <div class="divider"></div>
+      <div class="projects-grid">
+
+        <!-- Project cards — click opens modal -->
+        <div class="project-card" onclick="openModal('proj1')">
+          <img src="{css,images,pages}/images/character.png" class="project-card-thumb" alt="Project 1"> 
+          <!-- <div class="project-card-thumb-placeholder">🤖</div> -->
+          <div class="project-card-body">
+            <h4>Character Recognition of Nepali Vehicle Number Plate</h4>
+            <p>Click to learn more →</p>
+          </div>
+        </div>
+
+        <div class="project-card" onclick="openModal('proj2')">
+          <!-- <div class="project-card-thumb-placeholder">🌐</div> -->
+          <img src="{css,images,pages}/images/inpainting.png" class="project-card-thumb" alt="Project 1"> 
+          
+          <div class="project-card-body">
+            <h4>Artifuse: Image Inpainting with AI</h4>
+            <p>Click to learn more →</p>
+          </div>
+        </div>
+
+        <div class="project-card" onclick="openModal('proj3')">
+          <!-- <div class="project-card-thumb-placeholder">📊</div> -->
+          <img src="{css,images,pages}/images/handwritten.png" class="project-card-thumb" alt="Project 1"> 
+          <div class="project-card-body">/
+            <h4>Handwritten Devanagari Character Recognition</h4>
+            <p>Click to learn more →</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications -->
+  <section class="section">
+    <div class="section-tag yellow">📄 Publications</div>
+    <h2 class="section-title">Research Work</h2>
+    <div class="divider yellow"></div>
+
+    <div class="pub-card">
+      <div class="pub-icon">📰</div>
+      <div>
+        <h4>Character recognition of nepali number plate</h4>
+        <p class="pub-meta">S. Khadka, S. Baral, S. Tiwari, and S. Ghimire, · Information Systems for Intelligent Systems , A. Iglesias, J. Shin, N. Bhatt, and A. Joshi, Eds., vol. 1744, Springer · 2026</p>
+        <a href="https://www.scilit.com/publications/1c474ff9cd57b2a37b23bfbfae175fa7" target="_blank" class="pub-link">
+          🔗 View Publication
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteering -->
+  <section class="section" style="background:var(--yellow-light);margin:0;max-width:100%;padding:72px 48px;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div class="section-tag yellow">🤝 Volunteering</div>
+      <h2 class="section-title">Community Contributions</h2>
+      <div class="divider yellow"></div>
+      <div class="volunteer-rows">
+
+        <!-- 1. The Zerone -->
+        <div class="vol-row-card">
+          <div class="vol-row-img-wrap">
+            <img src="{css,images,pages}/images/zerone1.JPG" class="vol-row-img" alt="The Zerone Magazine">
+          </div>
+          <div class="vol-row-content">
+            <span class="vol-row-badge">📰 Event Coverage</span>
+            <h4>The Zerone — Event Coverage Head</h4>
+            <p class="vol-row-org">Pulchowk Campus · Technical Magazine</p>
+            <p class="vol-row-preview">The Zerone is more than just a magazine — it's a tradition carried forward by students of Pulchowk Campus, a technical publication designed, written, and published entirely by students themselves...</p>
+            <div class="vol-row-full" id="vol-full-1">
+              <p>The Zerone is more than just a magazine — it's a tradition carried forward by students of Pulchowk Campus, a technical publication designed, written, and published entirely by students themselves. As the Event Coverage Head, I had the incredible responsibility of capturing moments that mattered — the energy of hackathons, the intensity of tech talks, and the quiet brilliance of students building things behind the scenes. One of the most memorable events I covered was CIT (Children in Technology), where I documented the stories of young minds being introduced to the world of technology for the very first time. From framing the right shots to writing stories that did justice to each moment, this role taught me that technology isn't just about building — it's also about storytelling, preserving memories, and inspiring others through words and images.</p>
+            </div>
+            <button class="vol-read-toggle" onclick="toggleVolunteer('vol-full-1', this)">Read more ↓</button>
+          </div>
+        </div>
+
+        <!-- 2. Children in Technology (CIT) -->
+        <div class="vol-row-card">
+          <div class="vol-row-img-wrap">
+            <img src="{css,images,pages}/images/cit.JPG" class="vol-row-img" alt="Children in Technology">
+          </div>
+          <div class="vol-row-content">
+            <span class="vol-row-badge">🌍 Outreach</span>
+            <h4>Children in Technology (CIT)</h4>
+            <p class="vol-row-org">Pulchowk Campus CE · Worldlink · Nationwide, Nepal</p>
+            <p class="vol-row-preview">Some experiences change you quietly. CIT was one of those — a collaborative initiative between Computer Engineering students of Pulchowk Campus and Worldlink, reaching across all provinces of Nepal...</p>
+            <div class="vol-row-full" id="vol-full-2">
+              <p>Some experiences change you quietly. CIT was one of those — a collaborative initiative between Computer Engineering students of Pulchowk Campus and Worldlink, reaching across all provinces of Nepal to spread digital awareness. We traveled to remote communities where the internet was still a novel concept, where children's eyes would light up the moment they saw a computer screen for the first time. It wasn't just about teaching them how to browse or type — it was about opening a window to possibilities they never knew existed. From the hills of western Nepal to the terai plains, every classroom we walked into was a reminder that access to technology isn't a luxury, it's a bridge to opportunity. This experience grounded me, and I carry those moments with me — the excitement of a child discovering Google Maps and finding their own village on the screen.</p>
+            </div>
+            <button class="vol-read-toggle" onclick="toggleVolunteer('vol-full-2', this)">Read more ↓</button>
+          </div>
+        </div>
+
+        <!-- 3. Impact Marathon 2.0 -->
+        <div class="vol-row-card">
+          <div class="vol-row-img-wrap">
+            <img src="{css,images,pages}/images/marathon.JPG" class="vol-row-img" alt="Impact Marathon 2.0">
+          </div>
+          <div class="vol-row-content">
+            <span class="vol-row-badge">🏃‍♀️ Health & Wellness</span>
+            <h4>Pulchowk Girls — Impact Marathon 2.0</h4>
+            <p class="vol-row-org">Pulchowk Campus · Kathmandu</p>
+            <p class="vol-row-preview">Running 5 kilometers might not sound like a revolution, but when hundreds of people show up at dawn — lacing up their shoes, stretching under the early morning sky — it starts to feel like one...</p>
+            <div class="vol-row-full" id="vol-full-3">
+              <p>Running 5 kilometers might not sound like a revolution, but when hundreds of people show up at dawn — lacing up their shoes, stretching under the early morning sky — it starts to feel like one. Impact Marathon 2.0, organized under the Pulchowk Girls initiative, was born from a simple but powerful idea: health matters, movement matters, and community matters. As one of the organizers, I was involved in every step — from planning the route and coordinating with local authorities to managing volunteer stations and cheering runners across the finish line. The marathon was more than just a race. It was a statement about obesity reduction, about women leading in spaces they're often overlooked in, and about the engineering community stepping outside the lab to make a tangible, physical impact. Seeing participants of all ages — from first-year students to professors — crossing the finish line with smiles and sweat was the most rewarding part of it all.</p>
+            </div>
+            <button class="vol-read-toggle" onclick="toggleVolunteer('vol-full-3', this)">Read more ↓</button>
+          </div>
+        </div>
+
+        <!-- 4. Teaching Instructor -->
+        <div class="vol-row-card">
+          <div class="vol-row-img-wrap">
+            <img src="{css,images,pages}/images/advancedcit.JPG" class="vol-row-img" alt="Teaching Instructor">
+          </div>
+          <div class="vol-row-content">
+            <span class="vol-row-badge">👩‍🏫 Teaching</span>
+            <h4>Teaching Instructor — LOCUS, Pulchowk Campus</h4>
+            <p class="vol-row-org">Advanced C · Girls to Code · Software Fellowship</p>
+            <p class="vol-row-preview">There's a particular kind of joy in watching someone's face the moment a concept clicks — that shift from confusion to confidence. As a volunteer teaching instructor, I got to witness that magic over and over...</p>
+            <div class="vol-row-full" id="vol-full-4">
+              <p>There's a particular kind of joy in watching someone's face the moment a concept clicks — that shift from confusion to confidence. As a volunteer teaching instructor, I got to witness that magic over and over again. I taught advanced C programming courses, mentored students through the "Girls to Code" initiative — a program dedicated to empowering women in tech — and contributed to the Software Fellowship organized by LOCUS, the annual technical festival of Pulchowk Campus. Each of these experiences was different, yet connected by the same thread: giving back to the community that shaped me. In the Advanced C sessions, I helped students navigate pointers, memory management, and data structures — the building blocks that could make or break their engineering journey. In Girls to Code, I saw firsthand how representation matters. When young women see someone who looks like them teaching, debugging, and problem-solving, it quietly reshapes what they believe is possible for themselves.</p>
+            </div>
+            <button class="vol-read-toggle" onclick="toggleVolunteer('vol-full-4', this)">Read more ↓</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div><!-- end #academic -->
+
+
+<!-- ===================== TRAVEL PAGE ===================== -->
+<div id="travel" class="page">
+
+  <div class="travel-header-banner">
+    <h1>✈️ Travel Stories</h1>
+    <p>Places I've explored, memories I've made, and stories waiting to be told.</p>
+  </div>
+
+  <!-- ===== SUBSECTION: TREKS & JOURNEYS ===== -->
+  <section class="travel-sub" id="travel-treks">
+    <div class="travel-sub-header">
+
+      <div>
+        <h2 class="travel-sub-title">Treks & Journeys</h2>
+        <p class="travel-sub-desc">Through mountain passes, ancient trails, and skies that stretch forever — these are the paths that changed me.</p>
+      </div>
+    </div>
+
+    <div class="trek-featured-grid">
+
+      <!-- ABC — Featured Hero Card -->
+      <div class="trek-card trek-card-hero">
+        <div class="travel-slider" data-images='["{css,images,pages}/images/abc4.JPG","{css,images,pages}/images/abc2.JPG","{css,images,pages}/images/abc5.JPG"]'>
+          <div class="travel-slider-track">
+            <img src="{css,images,pages}/images/abc4.JPG" class="travel-img" alt="Annapurna Base Camp">
+            <img src="{css,images,pages}/images/abc2.JPG" class="travel-img" alt="Annapurna Base Camp">
+            <img src="{css,images,pages}/images/abc5.JPG" class="travel-img" alt="Annapurna Base Camp">
+          </div>
+          <button class="slider-arrow slider-arrow-left" aria-label="Previous image">&#10094;</button>
+          <button class="slider-arrow slider-arrow-right" aria-label="Next image">&#10095;</button>
+          <div class="slider-dots">
+            <span class="slider-dot active"></span>
+            <span class="slider-dot"></span>
+            <span class="slider-dot"></span>
+          </div>
+        </div>
+        <div class="trek-overlay">
+         
+          <h3>Annapurna Base Camp</h3>
+          <p class="trek-meta">🇳🇵 Gandaki Province, Nepal</p>
+          <span class="travel-date">📅 October 2025</span>
+        </div>
+      </div>
+
+      <!-- Mustang -->
+      <div class="trek-card">
+        <div class="travel-slider" data-images='["{css,images,pages}/images/mustang1.JPG","{css,images,pages}/images/mustang2.JPG","{css,images,pages}/images/mustang3.JPG"]'>
+          <div class="travel-slider-track">
+            <img src="{css,images,pages}/images/mustang1.JPG" class="travel-img" alt="Mustang, Lomanthang">
+            <img src="{css,images,pages}/images/mustang2.JPG" class="travel-img" alt="Mustang, Lomanthang">
+            <img src="{css,images,pages}/images/mustang3.JPG" class="travel-img" alt="Mustang, Lomanthang">
+          </div>
+          <button class="slider-arrow slider-arrow-left" aria-label="Previous image">&#10094;</button>
+          <button class="slider-arrow slider-arrow-right" aria-label="Next image">&#10095;</button>
+          <div class="slider-dots">
+            <span class="slider-dot active"></span>
+            <span class="slider-dot"></span>
+            <span class="slider-dot"></span>
+          </div>
+        </div>
+        <div class="trek-overlay">
+   
+          <h3>Mustang, Lomanthang</h3>
+          <p class="trek-meta">🇳🇵 Gandaki, Nepal</p>
+          <span class="travel-date">📅 October 2024</span>
+        </div>
+      </div>
+
+      <!-- Mardi Himal -->
+      <div class="trek-card">
+        <div class="travel-slider" data-images='["{css,images,pages}/images/mardi1.jpg","{css,images,pages}/images/mardi2.jpg"]'>
+          <div class="travel-slider-track">
+            <img src="{css,images,pages}/images/mardi1.jpg" class="travel-img" alt="Mardi Himal">
+            <img src="{css,images,pages}/images/mardi2.jpg" class="travel-img" alt="Mardi Himal">
+          </div>
+          <button class="slider-arrow slider-arrow-left" aria-label="Previous image">&#10094;</button>
+          <button class="slider-arrow slider-arrow-right" aria-label="Next image">&#10095;</button>
+          <div class="slider-dots">
+            <span class="slider-dot active"></span>
+            <span class="slider-dot"></span>
+          </div>
+        </div>
+        <div class="trek-overlay">
+      
+          <h3>Mardi Himal</h3>
+          <p class="trek-meta">🇳🇵 Gandaki, Nepal</p>
+          <span class="travel-date">📅 September 2023</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== SUBSECTION: ADVENTURES ===== -->
+  <section class="travel-sub travel-sub-adventure" id="travel-adventures">
+    <div class="travel-sub-header">
+
+      <div>
+        <h2 class="travel-sub-title">My Adventures</h2>
+        <p class="travel-sub-desc">Adrenaline, water, wind, and wild moments — the experiences that made my heart race and my spirit soar.</p>
+      </div>
+    </div>
+
+    <div class="adventure-grid">
+
+      <!-- Kayaking -->
+      <div class="adventure-card">
+        <div class="travel-slider" data-images='["{css,images,pages}/images/kayak.JPG"]'>
+          <div class="travel-slider-track">
+            <img src="{css,images,pages}/images/kayak.JPG" class="travel-img" alt="Kayaking">
+          </div>
+        </div>
+        <div class="adventure-overlay">
+          <span class="adventure-type">🛶 Water Sport</span>
+          <h3>Kayaking</h3>
+          <p>🇳🇵 Pokhara, Nepal</p>
+          <span class="travel-date">📅 September 2025</span>
+        </div>
+      </div>
+
+      <!-- Bhotekoshi Rafting -->
+      <div class="adventure-card">
+        <div class="travel-slider" data-images='["{css,images,pages}/images/raft1.JPG","{css,images,pages}/images/raft2.JPG"]'>
+          <div class="travel-slider-track">
+            <img src="{css,images,pages}/images/raft1.JPG" class="travel-img" alt="Bhotekoshi Rafting">
+            <img src="{css,images,pages}/images/raft2.JPG" class="travel-img" alt="Bhotekoshi Rafting">
+          </div>
+          <button class="slider-arrow slider-arrow-left" aria-label="Previous image">&#10094;</button>
+          <button class="slider-arrow slider-arrow-right" aria-label="Next image">&#10095;</button>
+          <div class="slider-dots">
+            <span class="slider-dot active"></span>
+            <span class="slider-dot"></span>
+          </div>
+        </div>
+        <div class="adventure-overlay">
+          <span class="adventure-type">🌊 Rafting</span>
+          <h3>Bhotekoshi Rafting</h3>
+          <p>🇳🇵 Nepal</p>
+          <span class="travel-date">📅 July 2023</span>
+        </div>
+      </div>
+
+      <!-- Archery -->
+      <div class="adventure-card">
+        <div class="travel-slider" data-images='["{css,images,pages}/images/archery1.JPG","{css,images,pages}/images/archery2.JPG"]'>
+          <div class="travel-slider-track">
+            <img src="{css,images,pages}/images/archery1.JPG" class="travel-img" alt="Archery">
+            <img src="{css,images,pages}/images/archery2.JPG" class="travel-img" alt="Archery">
+          </div>
+          <button class="slider-arrow slider-arrow-left" aria-label="Previous image">&#10094;</button>
+          <button class="slider-arrow slider-arrow-right" aria-label="Next image">&#10095;</button>
+          <div class="slider-dots">
+            <span class="slider-dot active"></span>
+            <span class="slider-dot"></span>
+          </div>
+        </div>
+        <div class="adventure-overlay">
+          <span class="adventure-type">🎯 Precision Sport</span>
+          <h3>Archery</h3>
+          <p>🇳🇵 Bagmati, Nepal</p>
+          <span class="travel-date">📅 September 2024</span>
+        </div>
+      </div>
+
+      <!-- Paragliding -->
+      <div class="adventure-card">
+        <div class="travel-slider" data-images='["{css,images,pages}/images/para.jpg"]'>
+          <div class="travel-slider-track">
+            <img src="{css,images,pages}/images/para.jpg" class="travel-img" alt="Paragliding">
+          </div>
+        </div>
+        <div class="adventure-overlay">
+          <span class="adventure-type">🪂 Aerial</span>
+          <h3>Paragliding</h3>
+          <p>🇳🇵 Pokhara, Nepal</p>
+          <span class="travel-date">📅 March 2020</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Travel Lightbox -->
+  <div class="travel-lightbox" id="travel-lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">✕</button>
+    <button class="lightbox-arrow lightbox-arrow-left" id="lightbox-prev" aria-label="Previous image">&#10094;</button>
+    <button class="lightbox-arrow lightbox-arrow-right" id="lightbox-next" aria-label="Next image">&#10095;</button>
+    <div class="lightbox-content">
+      <img src="" alt="" id="lightbox-img" class="lightbox-img">
+    </div>
+    <div class="lightbox-counter" id="lightbox-counter"></div>
+  </div>
+
+</div><!-- end #travel -->
+
+
+<!-- ===================== BLOGS PAGE ===================== -->
+<div id="blogs" class="page">
+
+  <div class="blogs-header-banner">
+    <h1>✍️ My Writings</h1>
+    <p>Thoughts, stories, and ideas published on Medium. Click to read the full article.</p>
+  </div>
+
+  <div class="blogs-grid">
+
+    <div class="blog-card">
+      <a href="https://medium.com/zerone-magazine/its-9-p-m-569fa23a79d9" target="_blank" class="blog-thumb-link">
+        <img src="{css,images,pages}/images/zerone.webp" class="blog-thumb" alt="Blog 1"> 
+       
+      </a>
+      <div class="blog-body">
+        <span class="blog-tag">Daily chores</span>
+        <h3>It's 9 P.M.</h3>
+        <p>A regular evening routine that reflects the comfort and tranquility of the end of the day.</p>
+        <a href="https://medium.com/zerone-magazine/its-9-p-m-569fa23a79d9" target="_blank" class="blog-read-link">
+          Read on Medium →
+        </a>
+      </div>
+    </div>
+
+ 
+</div><!-- end #blogs -->
+
+
+<!-- ===== PROJECT MODALS ===== -->
+<div class="modal-overlay" id="modal-proj1" onclick="closeModal('proj1', event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('proj1', event)">✕</button>
+    <div class="modal-thumb-placeholder" style="background:linear-gradient(135deg,#e8f7ef,#b2dfdb);">🤖</div>
+    <span class="modal-tag">🚀 Machine Learning</span>
+    <h3>Character Recognition of Nepali Vehicle Number Plate</h3>
+    <p>Developed a vehicle license plate detection and recognition system tailored for real-world Nepali datasets by implementing a two-stage pipeline. The approach utilizes YOLOv8 for accurate and robust number plate localization, followed by deep convolutional neural networks for character recognition specifically adapted to Nepali script. To enhance performance and generalization, transfer learning techniques were applied to fine-tune pre-trained models on a custom-curated Nepali license plate dataset, enabling effective recognition under diverse real-world conditions.</p>
+    <div class="modal-tech">
+      <span>Pytorch</span><span>Optical Character Recognition</span><span>Object Detection</span>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-proj2" onclick="closeModal('proj2', event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('proj2', event)">✕</button>
+    <div class="modal-thumb-placeholder" style="background:linear-gradient(135deg,#fff8e1,#ffe082);">🌐</div>
+    <span class="modal-tag">🚀 Machine Learning</span>
+    <h3>Artifuse: Image Inpainting with AI</h3>
+    <p>Designed and deployed an end-to-end intelligent image inpainting system using deep learning, leveraging conditional GANs (Pix2Pix) to enable high-fidelity reconstruction of masked or corrupted regions within images. The system was built to intelligently restore missing visual content while preserving structural consistency and texture realism. Additionally, the project integrated robust deep learning pipelines with full-stack web development to support real-time inference, seamless user interaction, and an interactive deployment environment for practical use.</p>
+    <div class="modal-tech">
+      <span>Pytorch</span><span>Image Preprocessing</span><span>Generative AI</span><span>conditional-GAN</span>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-proj3" onclick="closeModal('proj3', event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('proj3', event)">✕</button>
+    <div class="modal-thumb-placeholder" style="background:linear-gradient(135deg,#e8f2fb,#bbdefb);">📊</div>
+    <span class="modal-tag">🚀 Machine Learning</span>
+    <h3>Handwritten Devanagari Character Recognition</h3>
+    <p>Developed a novel dataset for handwritten Devanagari conjunct consonants by extending the existing Devanagari character set, enabling richer linguistic representation and significantly enhancing recognition capabilities for complex script structures. The project focused on creating a robust benchmark for handwritten character recognition tasks and leveraged transfer learning with deep convolutional neural networks (CNNs) to achieve state-of-the-art (SOTA) accuracy.</p>
+    <div class="modal-tech">
+      <span>Pytorch</span><span>CNN</span><span>Image Preprocessing</span><span>Dataset Creation</span>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>© 2024 <span>Sandhya Baral</span>. Made in Nepal 🇳🇵</p>
+</footer>
+
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  // Volunteer read-more toggle
+  function toggleVolunteer(id, btn) {
+    const el = document.getElementById(id);
+    const isOpen = el.classList.toggle('open');
+    btn.textContent = isOpen ? 'Read less ↑' : 'Read more ↓';
+  }
+
+  // Page navigation
+  function showPage(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById(page).classList.add('active');
+    document.getElementById('nav-' + page).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return false;
+  }
+
+  // Project modals
+  function openModal(id) {
+    document.getElementById('modal-' + id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id, event) {
+    if (event.target === document.getElementById('modal-' + id) || event.target.classList.contains('modal-close')) {
+      document.getElementById('modal-' + id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(m => {
+        m.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+      closeLightbox();
+    }
+  });
+
+  // ====== TRAVEL IMAGE SLIDER ======
+  document.querySelectorAll('.travel-slider').forEach(slider => {
+    const track = slider.querySelector('.travel-slider-track');
+    const images = track.querySelectorAll('.travel-img, .travel-img-placeholder');
+    const dots = slider.querySelectorAll('.slider-dot');
+    const leftArrow = slider.querySelector('.slider-arrow-left');
+    const rightArrow = slider.querySelector('.slider-arrow-right');
+    let currentIndex = 0;
+    const totalImages = images.length;
+
+    function goToSlide(index) {
+      if (index < 0) index = totalImages - 1;
+      if (index >= totalImages) index = 0;
+      currentIndex = index;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+    }
+
+    if (leftArrow) {
+      leftArrow.addEventListener('click', function(e) {
+        e.stopPropagation();
+        goToSlide(currentIndex - 1);
+      });
+    }
+    if (rightArrow) {
+      rightArrow.addEventListener('click', function(e) {
+        e.stopPropagation();
+        goToSlide(currentIndex + 1);
+      });
+    }
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', function(e) {
+        e.stopPropagation();
+        goToSlide(i);
+      });
+    });
+
+    // Touch / swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    slider.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    slider.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) goToSlide(currentIndex + 1);
+        else goToSlide(currentIndex - 1);
+      }
+    }, { passive: true });
+
+    // Click image to open lightbox
+    images.forEach((img, i) => {
+      if (img.tagName === 'IMG') {
+        img.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const dataImages = slider.getAttribute('data-images');
+          if (dataImages) {
+            const srcs = JSON.parse(dataImages);
+            openLightbox(srcs, i);
+          }
+        });
+        img.style.cursor = 'zoom-in';
+      }
+    });
+  });
+
+  // ====== LIGHTBOX ======
+  const lightbox = document.getElementById('travel-lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCounter = document.getElementById('lightbox-counter');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+  let lightboxImages = [];
+  let lightboxIndex = 0;
+
+  function openLightbox(images, index) {
+    lightboxImages = images;
+    lightboxIndex = index;
+    updateLightbox();
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // Hide arrows if single image
+    lightboxPrev.style.display = images.length <= 1 ? 'none' : '';
+    lightboxNext.style.display = images.length <= 1 ? 'none' : '';
+    lightboxCounter.style.display = images.length <= 1 ? 'none' : '';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function updateLightbox() {
+    lightboxImg.classList.remove('lightbox-img-animate');
+    // Force reflow to restart animation
+    void lightboxImg.offsetWidth;
+    lightboxImg.src = lightboxImages[lightboxIndex];
+    lightboxImg.classList.add('lightbox-img-animate');
+    lightboxCounter.textContent = (lightboxIndex + 1) + ' / ' + lightboxImages.length;
+  }
+
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox || e.target.classList.contains('lightbox-content')) {
+      closeLightbox();
+    }
+  });
+  lightboxPrev.addEventListener('click', function(e) {
+    e.stopPropagation();
+    lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+    updateLightbox();
+  });
+  lightboxNext.addEventListener('click', function(e) {
+    e.stopPropagation();
+    lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
+    updateLightbox();
+  });
+
+  // Keyboard navigation for lightbox
+  document.addEventListener('keydown', function(e) {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'ArrowLeft') {
+      lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+      updateLightbox();
+    } else if (e.key === 'ArrowRight') {
+      lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
+      updateLightbox();
+    }
+  });
+
+  // Touch swipe for lightbox on mobile
+  let lbTouchStartX = 0;
+  lightbox.addEventListener('touchstart', function(e) {
+    lbTouchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  lightbox.addEventListener('touchend', function(e) {
+    const diff = lbTouchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
+      } else {
+        lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+      }
+      updateLightbox();
+    }
+  }, { passive: true });
+</script>
+
+</body>
+</html>
