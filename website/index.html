@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,22 +10,32 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@300;400;600;700&display=swap"
     rel="stylesheet" />
   <style>
     :root {
       --bg: #ffffff;
-      --surface: #f4f5fb;
-      --border: #e4e4ee;
-      --border-strong: #d2d2df;
-      --text: #050509;
-      --text-secondary: #16161d;
-      --text-muted: #2b2b36;
-      --accent: #4b3ce0;
-      --accent-hover: #382ac4;
-      --font-display: "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --surface: #f7f7f7;
+      --border: rgba(0, 0, 0, 0.1);
+      --border-strong: rgba(0, 0, 0, 0.18);
+
+      --text: rgba(0, 0, 0, 0.8);
+      --text-secondary: rgba(0, 0, 0, 0.6);
+      --text-muted: rgba(0, 0, 0, 0.54);
+      --heading: #313131;
+      --heading-strong: #000000;
+
+      --accent: #1565c0;
+      --accent-hover: #0d47a1;
+      --accent-contrast: #ffffff;
+
+      --card-bg: #ffffff;
+      --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+      --font-display: "Montserrat", sans-serif;
+      --font-body: "Roboto", sans-serif;
+      --font-mono: "Roboto", sans-serif;
+
       --sp-1: 4px;
       --sp-2: 8px;
       --sp-3: 12px;
@@ -33,13 +44,43 @@
       --sp-6: 32px;
       --sp-7: 48px;
       --sp-8: 64px;
-      --r-sm: 6px;
-      --content-max: 1000px;
-      --nav-h: 64px;
+      --sp-9: 100px;
+
+      --r-sm: 4px;
+      --r-md: 8px;
+
+      --content-max: 1290px;
+      --nav-h: 70px;
       --transition: 150ms ease;
     }
+
+    [data-theme="dark"] {
+      --bg: #23252f;
+      --surface: #272935;
+      --border: rgba(255, 255, 255, 0.1);
+      --border-strong: rgba(255, 255, 255, 0.2);
+
+      --text: #f8f8f2;
+      --text-secondary: rgba(248, 248, 242, 0.75);
+      --text-muted: rgba(248, 248, 242, 0.55);
+      --heading: #ffffff;
+      --heading-strong: #ffffff;
+
+      --accent: #bbdefb;
+      --accent-hover: #90caf9;
+      --accent-contrast: #12283f;
+
+      --card-bg: #2c2e3b;
+      --card-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
     *, *::before, *::after { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       background: var(--bg);
@@ -48,27 +89,29 @@
       font-size: 1rem;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
+      transition: background var(--transition), color var(--transition);
     }
+
     img { max-width: 100%; display: block; }
+
     a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
     a:hover { color: var(--accent-hover); }
-    h1, h2, h3 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      line-height: 1.22;
-      letter-spacing: -0.015em;
-      color: var(--text);
-      margin: 0 0 var(--sp-4);
-    }
+
+    h1, h2, h3 { font-family: var(--font-display); line-height: 1.25; margin: 0 0 var(--sp-3); }
+
     p { margin: 0 0 var(--sp-4); }
+
     ul, ol { margin: 0; padding: 0; list-style: none; }
+
     :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: var(--r-sm); }
+
     .container {
       width: 100%;
       max-width: var(--content-max);
       margin-inline: auto;
       padding-inline: var(--sp-5);
     }
+
     .skip-link {
       position: absolute;
       left: var(--sp-4);
@@ -82,23 +125,43 @@
       transition: top var(--transition);
     }
     .skip-link:focus { top: var(--sp-3); color: #fff; }
+
     /* ---------- Header ---------- */
     .site-header { height: var(--nav-h); border-bottom: 1px solid var(--border); }
     .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4); }
-    .site-name { font-family: var(--font-display); font-weight: 700; font-size: 1.0625rem; color: var(--text); }
-    .site-name:hover { color: var(--text); }
-    .nav-links { display: flex; gap: var(--sp-1); align-items: center; }
+    .site-name { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--heading-strong); }
+    .site-name:hover { color: var(--heading-strong); }
+
+    .nav-links { display: flex; gap: var(--sp-4); align-items: center; flex-wrap: wrap; }
     .nav-links a {
       display: inline-block;
-      padding: var(--sp-2) var(--sp-3);
-      border-radius: var(--r-sm);
-      color: var(--text-secondary);
+      padding: var(--sp-2) 0;
+      color: var(--text);
+      font-weight: 700;
       font-size: 0.9rem;
-      font-weight: 600;
+      white-space: nowrap;
     }
-    .nav-links a:hover { color: var(--text); background: var(--surface); }
-    .nav-links a.active { color: var(--accent); }
+    .nav-links a:hover { color: var(--accent); }
+
     .nav-actions { display: flex; align-items: center; gap: var(--sp-2); }
+
+    .theme-toggle {
+      display: inline-grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      background: var(--bg);
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+    .theme-toggle:hover { color: var(--text); border-color: var(--border-strong); }
+    .theme-toggle svg { width: 17px; height: 17px; }
+    .theme-toggle .icon-sun { display: none; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
     .nav-toggle {
       display: none;
       width: 38px;
@@ -112,74 +175,122 @@
       justify-content: center;
     }
     .nav-toggle svg { width: 18px; height: 18px; }
-    /* ---------- Layout: sidebar + content ---------- */
-    .layout { display: flex; flex-direction: column; gap: var(--sp-7); padding-block: var(--sp-7) var(--sp-8); }
-    .sidebar { flex-shrink: 0; width: 100%; }
-    .sidebar-photo {
-      width: 140px;
-      height: 140px;
+
+    /* ---------- Bands (full-width alternating sections) ---------- */
+    .band { padding-block: var(--sp-9); scroll-margin-top: var(--sp-6); }
+    .band-alt { background: var(--surface); }
+
+    .row { display: flex; flex-direction: column; gap: var(--sp-6); }
+    .heading-col { flex-shrink: 0; }
+    .heading-col h2 { font-size: 2.25rem; font-weight: 400; color: var(--heading); margin-bottom: 0; }
+    .content-col { min-width: 0; flex: 1; }
+
+    @media (min-width: 992px) {
+      .row { flex-direction: row; }
+      .heading-col { width: 33.3333%; }
+      .content-col { width: 66.6667%; }
+    }
+
+    /* ---------- Hero / About ---------- */
+    .hero-row { align-items: flex-start; }
+    .hero-side { flex-shrink: 0; text-align: center; }
+    @media (min-width: 992px) { .hero-side { text-align: left; width: 33.3333%; } }
+
+    .avatar {
+      width: 220px;
+      height: 220px;
       border-radius: 50%;
       overflow: hidden;
-      border: 1px solid var(--border);
       background: var(--surface);
-      margin-bottom: var(--sp-4);
+      margin: 0 auto var(--sp-5);
     }
-    .sidebar-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .sidebar-name { font-size: 1.375rem; margin-bottom: var(--sp-1); }
-    .sidebar-pronoun { color: var(--text-muted); font-size: 0.9rem; margin-bottom: var(--sp-3); }
-    .sidebar-role { color: var(--text-secondary); font-size: 0.9375rem; margin-bottom: var(--sp-5); }
-    .sidebar-info { display: flex; flex-direction: column; gap: var(--sp-3); }
-    .sidebar-info li { display: flex; align-items: center; gap: var(--sp-2); font-size: 0.9rem; color: var(--text-secondary); }
-    .sidebar-info svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--text-muted); }
-    .sidebar-info a { color: var(--text-secondary); }
-    .sidebar-info a:hover { color: var(--accent); }
-    /* ---------- Content ---------- */
-    .content { min-width: 0; }
-    .view { display: none; }
-    .view.is-active { display: block; }
-    .content-section { margin-bottom: var(--sp-8); }
-    .content-section:last-child { margin-bottom: 0; }
-    .prose p { color: var(--text-secondary); max-width: 68ch; }
-    .interests-label { font-weight: 700; color: var(--text); margin-bottom: var(--sp-3); }
-    .interests-list { display: flex; flex-direction: column; gap: var(--sp-2); margin-bottom: var(--sp-4); }
-    .interests-list li {
-      position: relative;
-      padding-left: var(--sp-4);
-      color: var(--text-secondary);
-      font-size: 0.9375rem;
+    @media (min-width: 992px) { .avatar { margin-inline: 0; } }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .hero-side h1 { font-size: 1.75rem; font-weight: 300; color: var(--heading-strong); margin-bottom: var(--sp-2); }
+    .hero-side h3 { font-size: 1rem; font-weight: 300; color: var(--text-muted); margin: 0 0 var(--sp-1); }
+
+    .icon-row { display: flex; gap: var(--sp-4); justify-content: center; margin-block: var(--sp-5) var(--sp-6); }
+    @media (min-width: 992px) { .icon-row { justify-content: flex-start; } }
+    .icon-row a { color: var(--accent); }
+    .icon-row svg { width: 28px; height: 28px; }
+
+    .section-subheading { font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: var(--sp-3); }
+
+    .interests-list, .mini-edu-list { display: flex; flex-direction: column; gap: var(--sp-2); }
+    .interests-list li { display: flex; align-items: center; gap: var(--sp-2); color: var(--text); font-size: 0.9375rem; }
+    .interests-list svg { width: 16px; height: 16px; color: var(--accent); flex-shrink: 0; }
+
+    .mini-edu-list li { display: flex; align-items: flex-start; gap: var(--sp-2); margin-bottom: var(--sp-3); }
+    .mini-edu-list li:last-child { margin-bottom: 0; }
+    .mini-edu-list svg { width: 16px; height: 16px; color: var(--accent); flex-shrink: 0; margin-top: 4px; }
+    .mini-edu-list .course { font-size: 0.9rem; color: var(--text); margin: 0; }
+    .mini-edu-list .institution { font-size: 0.78rem; color: var(--text-muted); margin: 0; }
+
+    .interests-education-row { display: flex; flex-direction: column; gap: var(--sp-6); margin-top: var(--sp-6); }
+    @media (min-width: 700px) {
+      .interests-education-row { flex-direction: row; }
+      .interests-education-row > div:first-child { width: 42%; }
+      .interests-education-row > div:last-child { width: 58%; }
     }
-    .interests-list li::before {
+
+    .prose p { color: var(--text); max-width: 68ch; }
+
+    /* ---------- News ---------- */
+    .news-table { width: 100%; border-collapse: collapse; }
+    .news-table td { padding: var(--sp-2) var(--sp-4) var(--sp-2) 0; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--text); vertical-align: top; }
+    .news-table tr:first-child td { border-top: none; }
+    .news-table .date-cell { width: 130px; white-space: nowrap; font-weight: 700; }
+
+    /* ---------- Publications ---------- */
+    .pub-list { display: flex; flex-direction: column; }
+    .pub-list > li { padding-block: var(--sp-6); border-top: 1px solid var(--border); }
+    .pub-list > li:first-child { border-top: none; padding-top: 0; }
+    .pub-title { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; color: var(--heading-strong); margin: 0 0 var(--sp-2); }
+    .pub-meta { color: var(--text-secondary); font-size: 0.9rem; margin: 0 0 var(--sp-3); }
+
+    .pub-tags { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+    .pub-tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 5px var(--sp-3);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: var(--r-sm);
+      transition: var(--transition);
+    }
+    .pub-tag:hover { background: var(--accent); color: var(--accent-contrast); }
+
+    /* ---------- Timeline: committee association ---------- */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
       content: "";
       position: absolute;
-      left: 0;
-      top: 0.6em;
-      width: 5px;
-      height: 5px;
+      left: 5px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: var(--border-strong);
+    }
+    .timeline > li { position: relative; padding-block: var(--sp-5); }
+    .timeline > li:first-child { padding-top: 0; }
+    .timeline > li::before {
+      content: "";
+      position: absolute;
+      left: -28px;
+      top: var(--sp-5);
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      background: var(--accent);
+      background: var(--bg);
+      border: 2px solid var(--accent);
     }
-    /* Simple lists: publications, news */
-    .simple-list { display: flex; flex-direction: column; }
-    .simple-list > li { padding-block: var(--sp-4); border-top: 1px solid var(--border); }
-    .simple-list > li:first-child { border-top: none; padding-top: 0; }
-    .pub-title { font-weight: 700; color: var(--text); margin: 0 0 var(--sp-1); }
-    .pub-meta { color: var(--text-secondary); font-size: 0.9rem; margin: 0 0 var(--sp-2); }
-    .pub-links { display: flex; gap: var(--sp-4); font-size: 0.9rem; }
-    .news-list .date {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      display: block;
-      margin-bottom: var(--sp-1);
-    }
-    .news-list li { color: var(--text-secondary); }
-    /* Timeline: education, experience, volunteering */
-    .timeline { display: flex; flex-direction: column; }
-    .timeline > li { display: flex; flex-direction: column; gap: var(--sp-1); padding-block: var(--sp-5); border-top: 1px solid var(--border); }
-    .timeline > li:first-child { border-top: none; padding-top: 0; }
-    .timeline .date { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); }
-    .timeline h3 { font-size: 1.0625rem; margin-bottom: var(--sp-1); }
-    .timeline .org { font-size: 0.9rem; color: var(--accent); font-weight: 600; margin-bottom: var(--sp-2); }
+    .timeline > li:first-child::before { top: 2px; }
+    .timeline .date { font-size: 0.8rem; color: var(--text-muted); }
+    .timeline h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--heading-strong); margin-bottom: var(--sp-1); }
+    .timeline .org { font-size: 0.9rem; color: var(--accent); font-weight: 500; margin-bottom: var(--sp-2); }
     .timeline .desc { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--sp-2); }
     .timeline .bullets { display: flex; flex-direction: column; gap: var(--sp-1); }
     .timeline .bullets li { position: relative; padding-left: var(--sp-4); color: var(--text-secondary); font-size: 0.9rem; }
@@ -193,21 +304,90 @@
       border-radius: 50%;
       background: var(--accent);
     }
-    /* Projects */
+
+    /* ---------- Experience: card timeline ---------- */
+    .exp-list { position: relative; padding-left: 28px; }
+    .exp-list::before {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 20px;
+      bottom: 20px;
+      width: 2px;
+      background: var(--border-strong);
+    }
+    .exp-item { position: relative; padding-block: var(--sp-4); }
+    .exp-item:first-child { padding-top: 0; }
+    .exp-item:last-child { padding-bottom: 0; }
+    .exp-item::before {
+      content: "";
+      position: absolute;
+      left: -28px;
+      top: calc(var(--sp-4) + 20px);
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+    }
+    .exp-item:first-child::before { top: 20px; }
+    .exp-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      box-shadow: var(--card-shadow);
+      padding: var(--sp-5);
+    }
+    .exp-header { display: flex; align-items: flex-start; gap: var(--sp-4); margin-bottom: var(--sp-3); }
+    .exp-logo {
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+      border-radius: var(--r-sm);
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+    .exp-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .exp-header-text { flex: 1; min-width: 0; }
+    .exp-title { font-family: var(--font-display); font-weight: 700; font-size: 1.0625rem; color: var(--text); margin: 0; }
+    .exp-org { font-family: var(--font-display); font-weight: 700; font-size: 0.9375rem; color: var(--accent); margin: 2px 0 var(--sp-2); }
+    .exp-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0; }
+    .exp-desc { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--sp-3); }
+    .exp-desc:last-child { margin-bottom: 0; }
+    .exp-card .bullets { display: flex; flex-direction: column; gap: var(--sp-2); }
+    .exp-card .bullets li { position: relative; padding-left: var(--sp-4); color: var(--text-secondary); font-size: 0.9rem; }
+    .exp-card .bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* ---------- Projects ---------- */
     .project-list { display: flex; flex-direction: column; }
     .project-list > li { padding-block: var(--sp-5); border-top: 1px solid var(--border); }
     .project-list > li:first-child { border-top: none; padding-top: 0; }
-    .project-list h3 { font-size: 1.0625rem; margin-bottom: var(--sp-2); }
+    .project-list h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.0625rem; color: var(--heading-strong); margin-bottom: var(--sp-2); }
     .project-list p { color: var(--text-secondary); font-size: 0.9rem; }
-    .project-links { display: flex; gap: var(--sp-4); font-size: 0.9rem; }
+    .project-links { display: flex; gap: var(--sp-2); flex-wrap: wrap; }
+
+    /* ---------- Contact ---------- */
+    .contact-info { display: flex; flex-direction: column; gap: var(--sp-4); }
+    .contact-info li { display: flex; align-items: center; gap: var(--sp-4); color: var(--text); font-size: 1rem; }
+    .contact-info svg { width: 26px; height: 26px; color: var(--accent); flex-shrink: 0; }
+    .contact-info a { color: var(--text); }
+    .contact-info a:hover { color: var(--accent); }
+
     /* ---------- Footer ---------- */
     .site-footer { border-top: 1px solid var(--border); padding-block: var(--sp-5); }
     .site-footer p { margin: 0; font-size: 0.875rem; color: var(--text-muted); }
-    /* ---------- Responsive ---------- */
-    @media (min-width: 800px) {
-      .layout { flex-direction: row; align-items: flex-start; }
-      .sidebar { width: 260px; }
-    }
+
+    /* ---------- Mobile nav ---------- */
     @media (max-width: 880px) {
       .nav-links {
         position: fixed;
@@ -223,12 +403,16 @@
         opacity: 0;
         pointer-events: none;
         transition: var(--transition);
+        max-height: calc(100vh - var(--nav-h));
+        overflow-y: auto;
       }
       .nav-links.open { transform: none; opacity: 1; pointer-events: auto; }
-      .nav-links a { padding: var(--sp-3) var(--sp-4); font-size: 1rem; }
+      .nav-links a { padding: var(--sp-3) var(--sp-4); font-size: 1.05rem; }
       .nav-toggle { display: inline-flex; }
     }
+
     @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
       *, *::before, *::after {
         animation-duration: 0.001ms !important;
         transition-duration: 0.001ms !important;
@@ -236,22 +420,37 @@
     }
   </style>
 </head>
+
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+
   <!-- ===== HEADER ===== -->
   <header class="site-header">
     <div class="container nav-inner">
-      <a class="site-name" href="#home" data-target="home">Sandhya Baral</a>
+      <a class="site-name" href="#about">Sandhya Baral | Personal Page</a>
+
       <nav aria-label="Primary">
         <ul class="nav-links" id="nav-links">
-          <li><a href="#home" data-target="home">About</a></li>
-          <li><a href="#education" data-target="education">Education</a></li>
-          <li><a href="#projects" data-target="projects">Projects</a></li>
-          <li><a href="#blogs" data-target="blogs">Blogs</a></li>
-          <li><a href="#volunteering" data-target="volunteering">Volunteering</a></li>
+          <li><a href="#about">Home</a></li>
+          <li><a href="#news">Recent News</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#committee">Committee Association</a></li>
+          <li><a href="#blogs">Blogs</a></li>
         </ul>
       </nav>
+
       <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+          </svg>
+        </button>
         <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M3 6h18M3 12h18M3 18h18" />
@@ -260,56 +459,39 @@
       </div>
     </div>
   </header>
+
   <main id="main">
-    <div class="container layout">
-      <!-- ===== SIDEBAR ===== -->
-      <aside class="sidebar">
-        <div class="sidebar-photo">
-          <img src="{css,images,pages}/images/self.png" alt="Portrait of Sandhya Baral" width="140" height="140" fetchpriority="high" />
-        </div>
-        <h1 class="sidebar-name">Sandhya Baral</h1>
-        <p class="sidebar-pronoun">she/her</p>
-        <p class="sidebar-role">Computer Engineer &amp; ML Researcher<br /></p>
-        <ul class="sidebar-info">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-            <span>Lalitpur, Nepal</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M14 9h1M9 13h1M14 13h1M9 21v-4h6v4" />
-            </svg>
-            <span>Digital Age Nepal</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z" />
-            </svg>
-            <a href="mailto:sandhyabaral44@gmail.com">Email</a>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-            </svg>
-            <a href="https://github.com/Sandukkk" target="_blank" rel="noopener">GitHub</a>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-            </svg>
-            <a href="https://www.linkedin.com/in/sandhya-baral-0237a9237/" target="_blank" rel="noopener">LinkedIn</a>
-          </li>
-        </ul>
-      </aside>
-      <!-- ===== CONTENT ===== -->
-      <div class="content">
-        <!-- HOME VIEW: About, Publications, News (default) -->
-        <div class="view is-active" id="view-home" data-view="home">
-          <section class="content-section" id="about">
-            <h2>About me</h2>
+    <!-- ===== ABOUT (hero) ===== -->
+    <section class="band" id="about">
+      <div class="container">
+        <div class="row hero-row">
+          <div class="hero-side">
+            <div class="avatar">
+              <img src="images/pp.JPG" alt="Portrait of Sandhya Baral" width="220" height="220" fetchpriority="high" />
+            </div>
+            <h1>Sandhya Baral</h1>
+            <h3>Computer Engineer | ML Researcher</h3>
+            <h3>Digital Age Nepal</h3>
+            <h3>Lalitpur, Nepal</h3>
+
+            <ul class="icon-row" aria-hidden="false">
+              <li><a href="mailto:sandhyabaral44@gmail.com" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>
+              </a></li>
+              <li><a href="https://github.com/Sandukkk" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              </a></li>
+              <li><a href="https://www.linkedin.com/in/sandhya-baral-0237a9237/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a></li>
+              <li><a href="files/Sandhya_Baral.pdf" target="_blank" rel="noopener" aria-label="CV">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              </a></li>
+            </ul>
+          </div>
+
+          <div class="content-col">
+            <h2>About Me</h2>
             <div class="prose">
               <p>I received my B.E. in Computer Engineering in 2025 from the Institute of Engineering (IOE), Pulchowk
                 Campus, Tribhuvan University. My research focuses on machine learning, computer vision,
@@ -321,136 +503,217 @@
                 Innovation Campus and placed in the top six at the largest all-female AI for Social Cause hackathon.
                 My academic work has been published in the 17th IAPR International Workshop on Document Analysis
                 Systems and the 4th World Conference on Information Systems for Business Management 2025.</p>
-
-                <p>Outside of work, I enjoy photography and traveling.</p>
-              <p>Here is my CV to download <a href="css/SandhyaBCV.pdf" target="_blank" rel="noopener">[CV]</a>.</p>
+              <p>I currently conduct industry research at a finance company, working at the intersection of machine
+                learning, Anti-Money Laundering (AML), and AI for security. I aspire to keep advancing
+                privacy-preserving machine learning and computer vision. Outside of work, I enjoy photography and
+                traveling.</p>
+              <p>Here is my CV to download <a href="files/Sandhya_Baral.pdf" target="_blank" rel="noopener">[CV]</a>.</p>
             </div>
-            <p class="interests-label">Research interests</p>
-            <ul class="interests-list">
-              <li>Computer Vision &amp; Generative AI</li>
-              <li>Privacy-Preserving ML (PPML)</li>
-              <li>Healthcare &amp; Image Analysis</li>
-              <li>Interpretable &amp; Transparent AI</li>
-            </ul>
-          </section>
-<section class="content-section" id="publications">
-  <h2>Publications</h2>
-  <ol class="simple-list">
-    <li>
-      <p class="pub-title">
-        Handwritten Devanagari Character Recognition: Conjunct Consonants Dataset Creation and Benchmarking with Transfer Learning
-      </p>
-      <p class="pub-meta">
-        Tiwari, S.<sup>*</sup>, Khadka, S.<sup>*</sup>, <strong><u>Baral, S.</u></strong><sup>*</sup>, &amp; Panday, S. P. (2026, September). In <strong>17th IAPR International Workshop on Document Analysis Systems (DAS 2026)</strong>.
-      </p>
-      <div class="pub-links">
-        <a href="https://drive.google.com/file/d/1QyT6kv3ScXbgbM-88HdPbMVPBLDcPp7k/view?usp=sharing"
-           target="_blank" rel="noopener">
-          View Paper →
-        </a>
-      </div>
-    </li>
-    <li>
-      <p class="pub-title">
-        Character Recognition of Nepali Number Plate
-      </p>
-      <p class="pub-meta">
-        Khadka, S., <strong><u>Baral, S.</u></strong>, Tiwari, S., &amp; Ghimire, S. (2026). In <strong>Information Systems for Intelligent Systems</strong>, vol. 1744, Springer.
-      </p>
-      <div class="pub-links">
-        <a href="https://arxiv.org/abs/2606.28946"
-           target="_blank" rel="noopener">
-          View Paper →
-        </a>
-      </div>
-    </li>
-  </ol>
-</section>
-          <section class="content-section" id="news">
-            <h2>News</h2>
-            <ul class="simple-list news-list">
-              <li>
-                <span class="date">Jun 16, 2026</span>
-                Paper on Handwritten Devanagari Character Recognition accepted at <em>DAS 2026</em> (17th IAPR
-                International Workshop on Document Analysis Systems).
-              </li>
-              <li>
-                <span class="date">Sep 5, 2025</span>
-                Registered as Computer Engineer, Nepal Engineering Council, Tribhuvan University.
-              </li>
-              <li>
-                <span class="date">Aug 17, 2025</span>
-                Best Capstone Project Award, Pulchowk Campus, IOE, Tribhuvan University.
-              </li>
-              <li>
-                <span class="date">Jul 13, 2025</span>
-                Paper on Nepali Number Plate Recognition published at <em>WCISBM 2025</em> (4th World Conference on
-                Information Systems for Business Management).
-              </li>
-              <li>
-                <span class="date">Mar 14, 2025</span>
-                Top Student, Samsung Innovation Campus Applied Data Science Course.
-              </li>
-              <li>
-                <span class="date">Jan 10, 2025</span>
-                Scholarship recipient, 5th Annual Nepal AI School (ANAIS 2024), NAAMII.
-              </li>
-              <li>
-                <span class="date">Apr 7, 2024</span>
-                Top 12, SheQual &amp; Ncell All-Females Hackathon — TruthShield (blockchain-based document
-                verification).
-              </li>
-              <li>
-                <span class="date">Jun 20, 2023</span>
-                Top 6, SheQual All-Females Hackathon — Astitwa (inclusive learning platform for children with
-                autism).
-              </li>
-            </ul>
-          </section>
+
+            <div class="interests-education-row">
+              <div>
+                <p class="section-subheading">Interests</p>
+                <ul class="interests-list">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    Computer Vision &amp; Generative AI
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    Privacy-Preserving ML (PPML)
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    Healthcare &amp; Image Analysis
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    Interpretable &amp; Transparent AI
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p class="section-subheading">Education</p>
+                <ul class="mini-edu-list">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>
+                    <div>
+                      <p class="course">B.E. in Computer Engineering, 2025</p>
+                      <p class="institution">Pulchowk Campus, IOE, Tribhuvan University</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- EDUCATION VIEW (nav-only) -->
-        <div class="view" id="view-education" data-view="education">
-          <section class="content-section" id="education">
-            <h2>Education</h2>
-            <ul class="timeline">
-              <li>
-                <span class="date">2021 – 2025</span>
-                <div>
-                  <h3>B.E. in Computer Engineering</h3>
-                  <p class="org">Pulchowk Campus, IOE, Tribhuvan University, Nepal</p>
-                  <p class="desc">Final-year project: Handwritten Devanagari Character Recognition — dataset creation
-                    and performance benchmarking using transfer learning.</p>
-                </div>
-              </li>
-              <li>
-                <span class="date">2018 – 2020</span>
-                <div>
-                  <h3>Higher Secondary (+2), Science &amp; Mathematics</h3>
-                  <p class="org">Motherland Secondary School, Nepal</p>
-                </div>
-              </li>
-            </ul>
-          </section>
-          <section class="content-section" id="experience">
-            <h2>Experience</h2>
-            <ul class="timeline">
-              <li>
-                <span class="date">Jun 2025 – Present</span>
-                <div>
-                  <h3>Python Developer / Machine Learning Researcher</h3>
-                  <p class="org">Digital Age Nepal</p>
-                   <p>I develop scalable machine learning solutions for financial applications,
-                     specializing in time-series anomaly detection, predictive modeling, graph learning,
-                     privacy-preserving AI, and intelligent document processing.</p>
-                </div>
-              </li>
-            </ul>
-          </section>
+      </div>
+    </section>
+
+    <!-- ===== NEWS ===== -->
+    <section class="band band-alt" id="news">
+      <div class="container">
+        <div class="row">
+          <div class="heading-col"><h2>Recent News</h2></div>
+          <div class="content-col">
+            <table class="news-table">
+              <colgroup><col style="width:130px" /><col /></colgroup>
+              <tbody>
+                <tr>
+                  <td class="date-cell">Jun 16, 2026</td>
+                  <td>Paper on Handwritten Devanagari Character Recognition accepted at <em>DAS 2026</em> (17th IAPR
+                    International Workshop on Document Analysis Systems).</td>
+                </tr>
+                <tr>
+                  <td class="date-cell">Sep 5, 2025</td>
+                  <td>Registered as Computer Engineer, Nepal Engineering Council, Tribhuvan University.</td>
+                </tr>
+                <tr>
+                  <td class="date-cell">Aug 17, 2025</td>
+                  <td>Best Capstone Project Award, Pulchowk Campus, IOE, Tribhuvan University.</td>
+                </tr>
+                <tr>
+                  <td class="date-cell">Jul 13, 2025</td>
+                  <td>Paper on Nepali Number Plate Recognition published at <em>WCISBM 2025</em> (4th World
+                    Conference on Information Systems for Business Management).</td>
+                </tr>
+                <tr>
+                  <td class="date-cell">Mar 14, 2025</td>
+                  <td>Top Student, Samsung Innovation Campus Applied Data Science Course.</td>
+                </tr>
+                <tr>
+                  <td class="date-cell">Jan 10, 2025</td>
+                  <td>Scholarship recipient, 5th Annual Nepal AI School (ANAIS 2024), NAAMII.</td>
+                </tr>
+                <tr>
+                  <td class="date-cell">Apr 7, 2024</td>
+                  <td>Top 12, SheQual &amp; Ncell All-Females Hackathon — TruthShield (blockchain-based document
+                    verification).</td>
+                </tr>
+                <tr>
+                  <td class="date-cell">Jun 20, 2023</td>
+                  <td>Top 6, SheQual All-Females Hackathon — Astitwa (inclusive learning platform for children with
+                    autism).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <!-- PROJECTS VIEW (nav-only) -->
-        <div class="view" id="view-projects" data-view="projects">
-          <section class="content-section">
-            <h2>Projects</h2>
+      </div>
+    </section>
+
+    <!-- ===== PUBLICATIONS ===== -->
+    <section class="band" id="publications">
+      <div class="container">
+        <div class="row">
+          <div class="heading-col"><h2>Publications</h2></div>
+          <div class="content-col">
+            <ol class="pub-list">
+              <li>
+                <p class="pub-title">Handwritten Devanagari Character Recognition: Conjunct Consonants Dataset
+                  Creation and Benchmarking with Transfer Learning</p>
+                <p class="pub-meta">Tiwari, S.<sup>*</sup>, Khadka, S.<sup>*</sup>, <strong><u>Baral, S.</u></strong><sup>*</sup>,
+                  &amp; Panday, S. P. (2026, September). In <strong>17th IAPR International Workshop on Document
+                    Analysis Systems (DAS 2026)</strong>.</p>
+                <div class="pub-tags">
+                  <a class="pub-tag" href="https://drive.google.com/file/d/1QyT6kv3ScXbgbM-88HdPbMVPBLDcPp7k/view?usp=sharing" target="_blank" rel="noopener">Paper</a>
+                  <a class="pub-tag" href="https://github.com/Sandukkk/Handwritten-Devanagari-Character-Recognition" target="_blank" rel="noopener">Code</a>
+                </div>
+              </li>
+              <li>
+                <p class="pub-title">Character Recognition of Nepali Number Plate</p>
+                <p class="pub-meta">S. Khadka, <strong>S. Baral</strong>, S. Tiwari, and S. Ghimire —
+                  <em>Information Systems for Intelligent Systems</em>, A. Iglesias, J. Shin, N. Bhatt, and A. Joshi,
+                  Eds., vol. 1744, Springer, 2026.</p>
+                <div class="pub-tags">
+                  <a class="pub-tag" href="https://link.springer.com/chapter/10.1007/978-3-032-12996-3_21" target="_blank" rel="noopener">View publication</a>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section class="band band-alt" id="experience">
+      <div class="container">
+        <div class="row">
+          <div class="heading-col"><h2>Experience</h2></div>
+          <div class="content-col">
+            <ul class="exp-list">
+              <li class="exp-item">
+                <div class="exp-card">
+                  <div class="exp-header">
+                    <div class="exp-logo">
+                      <img src="images/digitalage.jpeg" alt="Digital Age Nepal logo" width="56" height="56" loading="lazy" />
+                    </div>
+                    <div class="exp-header-text">
+                      <p class="exp-title">Python Developer / Machine Learning Researcher</p>
+                      <p class="exp-org">Digital Age Nepal</p>
+                      <p class="exp-meta">Jun 2025 – Present &middot; Lalitpur, Nepal</p>
+                    </div>
+                  </div>
+                  <p class="exp-desc">Lead the development of robust machine learning pipelines for large-scale
+                    financial data, focused on time-series anomaly detection.</p>
+                  <ul class="bullets">
+                    <li>Research privacy-preserving ML and interpretability, maintaining data security and
+                      compliance while handling sensitive financial information.</li>
+                    <li>Optimize state-of-the-art graph networks and unsupervised learning algorithms for predictive
+                      performance under strict computational and resource constraints.</li>
+                    <li>Engineer predictive time-series models for temporal anomaly detection, extracting behavioral
+                      insights from large-scale, high-cardinality relational financial databases.</li>
+                    <li>Design automated information-retrieval pipelines for complex legal literature using OCR and
+                      CNNs to accurately extract and process document data.</li>
+                  </ul>
+                </div>
+              </li>
+              <!-- <li class="exp-item">
+                <div class="exp-card">
+                  <div class="exp-header">
+                    <div class="exp-logo">
+                      <img src="images/experience/cit.png" alt="Children in Technology logo" width="56" height="56" loading="lazy" />
+                    </div>
+                    <div class="exp-header-text">
+                      <p class="exp-title">Volunteer — Children in Technology (CIT)</p>
+                      <p class="exp-org">Pulchowk Campus CE &amp; Worldlink</p>
+                      <p class="exp-meta">Nationwide, Nepal</p>
+                    </div>
+                  </div>
+                  <p class="exp-desc">Joined a collaboration between Computer Engineering students and Worldlink to
+                    spread digital awareness across all provinces of Nepal, introducing children — many seeing a
+                    computer for the first time — to technology and the internet.</p>
+                </div>
+              </li> -->
+              <li class="exp-item">
+                <div class="exp-card">
+                  <div class="exp-header">
+                    <div class="exp-logo">
+                      <img src="images/locus.jpeg" alt="LOCUS logo" width="56" height="56" loading="lazy" />
+                    </div>
+                    <div class="exp-header-text">
+                      <p class="exp-title">Teaching Instructor — LOCUS</p>
+                      <p class="exp-org">Advanced C · Girls to Code · Software Fellowship</p>
+                      <p class="exp-meta">LOCUS, Pulchowk Campus</p>
+                    </div>
+                  </div>
+                  <p class="exp-desc">Delivered Advanced C sessions and mentored participants in the Girls to Code
+                    initiative, empowering women in technology, and contributed to the Software Fellowship at LOCUS,
+                    Pulchowk Campus's annual technical festival.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="band" id="projects">
+      <div class="container">
+        <div class="row">
+          <div class="heading-col"><h2>Projects</h2></div>
+          <div class="content-col">
             <ul class="project-list">
               <li>
                 <h3>Character Recognition of Nepali Vehicle Number Plate</h3>
@@ -459,8 +722,8 @@
                   script. I implemented the deep CNNs and used transfer learning to adapt SOTA architectures for
                   Nepali characters, with YOLOv8 for plate localization and PyTorch for the recognition models.</p>
                 <div class="project-links">
-                  <a href="https://github.com/Sandukkk/Nepali-NumberPlate-Character-Recognition" target="_blank" rel="noopener">Code</a>
-                  <a href="https://arxiv.org/abs/2606.28946" target="_blank" rel="noopener">Paper</a>
+                  <a class="pub-tag" href="https://github.com/Sandukkk/Nepali-NumberPlate-Character-Recognition" target="_blank" rel="noopener">Code</a>
+                  <a class="pub-tag" href="https://www.scilit.com/publications/1c474ff9cd57b2a37b23bfbfae175fa7" target="_blank" rel="noopener">Paper</a>
                 </div>
               </li>
               <li>
@@ -469,7 +732,7 @@
                   in existing datasets. I led the data-collection protocol and dataset cleaning, then applied
                   transfer learning with deep CNNs in PyTorch to establish baseline performance metrics.</p>
                 <div class="project-links">
-                  <a href="https://github.com/Sandukkk/Handwritten-Devanagari-Character-Recognition" target="_blank" rel="noopener">Code</a>
+                  <a class="pub-tag" href="https://github.com/Sandukkk/Handwritten-Devanagari-Character-Recognition" target="_blank" rel="noopener">Code</a>
                 </div>
               </li>
               <li>
@@ -479,49 +742,21 @@
                   pixels, and integrated the PyTorch pipelines into a full-stack web deployment for real-time,
                   interactive inference.</p>
                 <div class="project-links">
-                  <a href="https://github.com/Sandukkk/Minor_ArtiFuse" target="_blank" rel="noopener">Code</a>
+                  <a class="pub-tag" href="https://github.com/Sandukkk/Minor_ArtiFuse" target="_blank" rel="noopener">Code</a>
                 </div>
               </li>
             </ul>
-          </section>
+          </div>
         </div>
-<!-- BLOGS VIEW (nav-only) -->
-<div class="view" id="view-blogs" data-view="blogs">
-  <section class="content-section">
-    <h2>Blog</h2>
-    <div class="cards">
-      <article class="card">
-        <h3>
-          <a href="https://medium.com/@sandhyabaral44/tale-of-children-in-technology-through-trails-and-tails-of-western-nepal-496fc0941901"
-             target="_blank" rel="noopener noreferrer">
-            Tale of Children in Technology Through Trails and Tails of Western Nepal
-          </a>
-        </h3>
-        <p class="desc">
-          Reflections on the Children in Technology initiative, sharing experiences,
-          challenges, and memorable moments from empowering young learners across
-          Western Nepal.
-        </p>
-      </article>
-      <article class="card">
-        <h3>
-          <a href="https://medium.com/zerone-magazine/its-9-p-m-569fa23a79d9"
-             target="_blank" rel="noopener noreferrer">
-            It's 9 P.M.
-          </a>
-        </h3>
-        <p class="desc">
-          A personal piece published in Zerone Magazine, exploring thoughts,
-          emotions, and moments that unfold as the day comes to an end.
-        </p>
-      </article>
-    </div>
-  </section>
-</div>
-        <!-- VOLUNTEERING VIEW (nav-only) -->
-        <div class="view" id="view-volunteering" data-view="volunteering">
-          <section class="content-section">
-            <h2>Volunteering &amp; community</h2>
+      </div>
+    </section>
+
+    <!-- ===== COMMITTEE ENGAGEMENT ===== -->
+    <section class="band band-alt" id="committee">
+      <div class="container">
+        <div class="row">
+          <div class="heading-col"><h2>Committee Engagement</h2></div>
+          <div class="content-col">
             <ul class="timeline">
               <li>
                 <span class="date">Pulchowk Campus</span>
@@ -534,103 +769,149 @@
                 </div>
               </li>
               <li>
-                <span class="date">Nationwide, Nepal</span>
-                <div>
-                  <h3>Children in Technology (CIT)</h3>
-                  <p class="org">Pulchowk Campus CE &amp; Worldlink</p>
-                  <p class="desc">Joined a collaboration between Computer Engineering students and Worldlink to
-                    spread digital awareness across all provinces of Nepal, introducing children — many seeing a
-                    computer for the first time — to technology and the internet.</p>
-                </div>
-              </li>
-              <li>
                 <span class="date">Kathmandu</span>
                 <div>
-                  <h3>Pulchowk Girls — Impact Marathon 2.0</h3>
+                  <h3>Pulchowk Girls — Finance Coordinator</h3>
                   <p class="org">Pulchowk Campus</p>
-                  <p class="desc">Co-organized a 5 km community marathon under the Pulchowk Girls initiative,
-                    advocating active lifestyles. Managed route planning, coordination with local authorities, and
-                    volunteer stations.</p>
-                </div>
-              </li>
-              <li>
-                <span class="date">LOCUS, Pulchowk</span>
-                <div>
-                  <h3>Teaching Instructor — LOCUS</h3>
-                  <p class="org">Advanced C · Girls to Code · Software Fellowship</p>
-                  <p class="desc">Delivered Advanced C sessions and mentored participants in the Girls to Code
-                    initiative, empowering women in technology, and contributed to the Software Fellowship at LOCUS,
-                    Pulchowk Campus's annual technical festival.</p>
+                  <p class="desc">A college community led by all-female from STEM communities Organised and coordinated 
+                    health-imapact marathons, equality events and competitions, encouraging the mass participation, engagement 
+                    and leadership of female.</p>
                 </div>
               </li>
             </ul>
-          </section>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <!-- ===== BLOGS ===== -->
+    <section class="band" id="blogs">
+      <div class="container">
+        <div class="row">
+          <div class="heading-col"><h2>Blog</h2></div>
+          <div class="content-col">
+            <ul class="project-list">
+              <li>
+                <h3><a href="https://medium.com/@sandhyabaral44/tale-of-children-in-technology-through-trails-and-tails-of-western-nepal-496fc0941901" target="_blank" rel="noopener noreferrer">Tale of Children in Technology Through Trails and Tails of Western Nepal</a></h3>
+                <p>Reflections on the Children in Technology initiative, sharing experiences, challenges, and
+                  memorable moments from empowering young learners across Western Nepal.</p>
+              </li>
+              <li>
+                <h3><a href="https://medium.com/zerone-magazine/its-9-p-m-569fa23a79d9" target="_blank" rel="noopener noreferrer">It's 9 P.M.</a></h3>
+                <p>A personal piece published in Zerone Magazine, exploring thoughts, emotions, and moments that
+                  unfold as the day comes to an end.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="band band-alt" id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="heading-col"><h2>Contact</h2></div>
+          <div class="content-col">
+            <ul class="contact-info">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z" />
+                </svg>
+                <span>You can reach me at <a href="mailto:sandhyabaral44@gmail.com">sandhyabaral44@gmail.com</a></span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span>Lalitpur, Bagmati Province, Nepal</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
   <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
     <div class="container">
       <p>&copy; <span id="year">2026</span> Sandhya Baral — Lalitpur, Nepal</p>
     </div>
   </footer>
+
   <script>
     (function () {
       "use strict";
+
+      var root = document.documentElement;
+
+      /* ---------- Theme ---------- */
+      var themeToggle = document.getElementById("theme-toggle");
+
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        if (themeToggle) {
+          themeToggle.setAttribute(
+            "aria-label",
+            theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
+          );
+        }
+      }
+
+      var stored = null;
+      try {
+        stored = localStorage.getItem("theme");
+      } catch (e) {}
+
+      var prefersDark =
+        window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      applyTheme(stored || (prefersDark ? "dark" : "light"));
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", function () {
+          var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          applyTheme(next);
+          try {
+            localStorage.setItem("theme", next);
+          } catch (e) {}
+        });
+      }
+
       /* ---------- Mobile navigation ---------- */
       var navToggle = document.getElementById("nav-toggle");
       var navLinks = document.getElementById("nav-links");
+
       function closeNav() {
         if (!navLinks) return;
         navLinks.classList.remove("open");
         navToggle.setAttribute("aria-expanded", "false");
         navToggle.setAttribute("aria-label", "Open menu");
       }
+
       if (navToggle && navLinks) {
         navToggle.addEventListener("click", function () {
           var open = navLinks.classList.toggle("open");
           navToggle.setAttribute("aria-expanded", String(open));
           navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
         });
+
         navLinks.querySelectorAll("a").forEach(function (link) {
           link.addEventListener("click", closeNav);
         });
+
         document.addEventListener("keydown", function (e) {
           if (e.key === "Escape") closeNav();
         });
       }
-      /* ---------- View routing (About/Education/Projects/Blogs/Volunteering) ---------- */
-      var views = Array.prototype.slice.call(document.querySelectorAll(".view"));
-      var navAnchors = Array.prototype.slice.call(document.querySelectorAll("[data-target]"));
-      var validTargets = views.map(function (v) { return v.getAttribute("data-view"); });
-      function showView(name) {
-        if (validTargets.indexOf(name) === -1) name = "home";
-        views.forEach(function (v) {
-          v.classList.toggle("is-active", v.getAttribute("data-view") === name);
-        });
-        navAnchors.forEach(function (a) {
-          var isActive = a.getAttribute("data-target") === name;
-          a.classList.toggle("active", isActive);
-          if (isActive) {
-            a.setAttribute("aria-current", "page");
-          } else {
-            a.removeAttribute("aria-current");
-          }
-        });
-        window.scrollTo(0, 0);
-      }
-      function targetFromHash() {
-        return (window.location.hash || "#home").replace("#", "") || "home";
-      }
-      window.addEventListener("hashchange", function () {
-        showView(targetFromHash());
-      });
-      showView(targetFromHash());
+
       /* ---------- Footer year ---------- */
       var yearEl = document.getElementById("year");
       if (yearEl) yearEl.textContent = String(new Date().getFullYear());
     })();
   </script>
 </body>
+
 </html>
